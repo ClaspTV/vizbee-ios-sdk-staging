@@ -28,6 +28,7 @@ FOUNDATION_EXPORT const unsigned char VizbeeKitVersionString[];
 #import <VizbeeKit/VZBSmartInstallCardConfiguration.h>
 #import <VizbeeKit/VZBGuidedSmartInstallCardConfiguration.h>
 #import <VizbeeKit/VZBMultiDeviceSmartInstallCardConfiguration.h>
+#import <VizbeeKit/VZBSmartHandoffCardConfiguration.h>
 
 #import <VizbeeKit/VZBCastButton.h>
 #import <VizbeeKit/VZBCastIconProxy.h>
@@ -54,6 +55,10 @@ FOUNDATION_EXPORT const unsigned char VizbeeKitVersionString[];
 #import <VizbeeKit/VZBVideoTrackStatus.h>
 #import <VizbeeKit/VZBVolumeClient.h>
 
+#import <VizbeeKit/VZBHandoffSession.h>
+#import <VizbeeKit/VZBHandoffSessionManager.h>
+#import <VizbeeKit/VZBHandoffCampaignInfo.h>
+
 #import <VizbeeKit/VZBAnalyticsManager.h>
 
 #import <VizbeeKit/VZBNotificationUserInfo.h>
@@ -64,3 +69,4 @@ FOUNDATION_EXPORT const unsigned char VizbeeKitVersionString[];
 #import <VizbeeKit/VZBError.h>
 
 #import <VizbeeKit/VZBMetricsEventPublisher.h>
+

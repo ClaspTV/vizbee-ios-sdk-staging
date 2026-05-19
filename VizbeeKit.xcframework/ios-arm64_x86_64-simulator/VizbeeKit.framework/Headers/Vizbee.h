@@ -29,6 +29,7 @@
 #import "VZBCastButton.h"
 
 @class VZBSessionManager;
+@class VZBHandoffSessionManager;
 @class VZBAnalyticsManager;
 
 /**
@@ -78,9 +79,9 @@
  * @param appAdapterDelegate required for the VizbeeSDK to interface with host application
  * @param completion called when initialization completes; receives a non-nil NSError on failure, nil on success
  */
-+(void) startWithAppID:(NSString *)appID
- andAppAdapterDelegate:(id<VZBAppAdapterDelegate>)appAdapterDelegate
-            completion:(void (^)(NSError* failure))completion;
++(void) startWithAppID:(NSString * _Nonnull)appID
+ andAppAdapterDelegate:(id<VZBAppAdapterDelegate> _Nonnull)appAdapterDelegate
+            completion:(void (^ _Nullable)(NSError * _Nullable failure))completion;
 
 /**
  * @brief Start Vizbee SDK using the provided application ID
@@ -93,7 +94,7 @@
 +(void) startWithAppID:(NSString * _Nonnull)appID
     appAdapterDelegate:(id<VZBAppAdapterDelegate> _Nonnull)appAdapterDelegate
       andVizbeeOptions:(VZBOptions * _Nonnull)options
-            completion:(void (^)(NSError* failure))completion;
+            completion:(void (^ _Nullable)(NSError * _Nullable failure))completion;
 
 +(void) stop;
 
@@ -300,6 +301,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData* _Nonnull)deviceToken;
  */
 +(VZBSessionManager* _Nonnull) getSessionManager;
 
+/// Returns the handoff session manager, which exposes handoff session lifecycle events.
++(VZBHandoffSessionManager* _Nonnull) getHandoffSessionManager;
+
 +(VZBAnalyticsManager* _Nonnull) getAnalyticsManager;
 
 #pragma mark - HomeOS
@@ -321,6 +325,17 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData* _Nonnull)deviceToken;
 
 +(void) startActiveDiscovery;
 +(void) stopActiveDiscovery;
+
+#pragma mark - Localization
+
+/// Sets the locale used for SDK UI strings (card titles, subtitles, buttons, etc.).
+/// If not called, the device system language is used automatically.
+/// Pass nil to revert to system language.
++ (void)setLocale:(nullable NSLocale *)locale;
+
+/// Returns the currently active SDK locale.
+/// If setLocale: was not called, returns the device system locale.
++ (NSLocale *)getLocale;
 
 //----------------------------------
 #pragma mark - Internal Use Only
