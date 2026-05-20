@@ -12,20 +12,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedInstance;
 
-/// Override the SDK display language. Pass nil to revert to en-US.
-- (void)setLocale:(nullable NSLocale *)locale;
+/// Override the SDK display language.
+/// Must be called before SDK initialization, or via +[Vizbee setLocale:]
+/// which is the safe public entry point for runtime locale changes.
+- (void)setLocale:(NSLocale *)locale;
 
-/// Returns the currently active locale override, or en-US if using system language.
-- (nullable NSLocale *)currentLocale;
+/// Returns the currently active locale override, or en-US if no override is set.
+/// Never returns nil.
+- (NSLocale *)currentLocale;
 
-/// Returns the current locale mapped to the server-side locale code
-/// (matches Android pref_entries_app_language_values).
-/// Returns en-US if the current language has no server mapping.
-- (nullable NSString *)currentLocaleCode;
+/// Maps the given locale to the server-side locale code
+/// (e.g. @"es-MX", @"pt-BR", @"zh-CN").
+/// Returns @"en-US" for any unsupported language.
+- (NSString *)currentLocaleCode:(NSLocale *)locale;
 
 /// Resolved bundle to pass to NSLocalizedStringFromTableInBundle.
 /// Returns the lproj-scoped bundle if a locale override is active,
-/// otherwise returns the full framework bundle (system language).
+/// otherwise returns the en-US.lproj bundle.
 - (NSBundle *)resolvedBundle;
 
 @end

@@ -329,13 +329,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData* _Nonnull)deviceToken;
 #pragma mark - Localization
 
 /// Sets the locale used for SDK UI strings (card titles, subtitles, buttons, etc.).
-/// If not called, the device system language is used automatically.
-/// Pass nil to revert to system language.
-+ (void)setLocale:(nullable NSLocale *)locale;
+/// If not called, defaults to en-US.
++ (void)setLocale:(nonnull NSLocale *)locale;
 
-/// Returns the currently active SDK locale.
-/// If setLocale: was not called, returns the device system locale.
-+ (NSLocale *)getLocale;
+/// Returns the locale currently used for SDK UI strings.
+/// If +setLocale: was not called, returns en-US.
++ (nonnull NSLocale *)getLocale;
 
 //----------------------------------
 #pragma mark - Internal Use Only
