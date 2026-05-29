@@ -55,7 +55,7 @@
 
 /**
  * Optional locale to override the SDK display language.
- * If not set, the device system language is used automatically.
+ * If not set, the en-US is used as default.
  */
 @property (nonatomic, strong) NSLocale * _Nullable locale;
 
