@@ -63,5 +63,5 @@ typedef NS_ENUM(NSInteger, VZBErrorCode) {
     /** getAppStatus: app not running */
     VZBErrorCodeAppNotRunning,
     
-    VZBErrorCodeScreenExitWithOlleh
+    VZBErrorCodeScreenExitWithOlleh,
 };
